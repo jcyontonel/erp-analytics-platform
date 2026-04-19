@@ -67,3 +67,33 @@ El proyecto simula un entorno real, integrando procesos transaccionales, almacen
 - Procesamiento de datos (ETL)
 - Generación de información analítica
 - Automatización de tareas
+
+
+## 🧠 Arquitectura del sistema
+
+```mermaid
+flowchart LR
+
+    A[Usuario] --> B[Frontend / UI]
+    B --> C[ERP Backend - Laravel]
+
+    C --> D[(Base de Datos - MySQL)]
+
+    D --> E[Proceso ETL / Scripts]
+    E --> F[(Base de Datos Analítica)]
+
+    F --> G[Consultas / Reportes]
+
+    C --> H[Automatización - Shell Scripts]
+    H --> I[Backups]
+    H --> J[Deploy Automático]
+
+    H --> K[Notificaciones Telegram]
+
+    subgraph Infraestructura
+        L[Linux - Termux]
+        C
+        D
+        E
+        H
+    end
